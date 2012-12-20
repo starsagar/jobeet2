@@ -1,0 +1,61 @@
+homepage:
+    pattern:  /
+    defaults: { _controller: jobeet2.controller:indexAction, _format: html }
+    requirements:   { _method: "GET" }
+
+index:
+    pattern:  /
+    defaults: { _controller: job.controller:indexAction, _format: html }
+    requirements:   { _method: "GET" }
+
+show:
+    pattern:  /{company}/{location}/{id}/{position}.{_format}
+    defaults: { _controller: job.controller:showAction, _format: html }
+    requirements:
+       _method: "GET"
+       id: \d+
+
+tokenized_show:
+    pattern:  /{token}/show.{_format}
+    defaults: { _controller: job.controller:showTokenizedAction, _format: html }
+    requirements:
+       _method: "GET"
+       token: \w+
+
+
+create:
+    pattern:  /create.{_format}
+    defaults: { _controller: job.controller:editAction, _format: html }
+    requirements:
+      _method: "GET|POST"
+
+edit:
+    pattern:  /{token}/edit.{_format}
+    defaults: { _controller: job.controller:editAction, _format: html }
+    requirements:
+       _method: "GET|POST"
+       token: \w+
+
+delete:
+    pattern:  /{token}/delete.{_format}
+    defaults: { _controller: job.controller:deleteAction, _format: html }
+    requirements:
+      _method: "GET"
+      token: \w+
+
+publish:
+    pattern:  /{token}/publish.{_format}
+    defaults: { _controller: job.controller:publishAction, _format: html }
+    requirements:
+      token: \w+
+
+extend:
+    pattern:  /{token}/extend.{_format}
+    defaults: { _controller: job.controller:extendAction, _format: html }
+    requirements:
+      token: \w+
+
+category:
+    pattern:  /category/{slug}.{_format}
+    defaults: {_controller: category.controller:showAction, _format: html }
+    requirements:   { _method: "GET" }

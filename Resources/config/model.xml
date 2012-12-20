@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="jobeet2.job.entity.class">Application\Jobeet2Bundle\Entity\Job</parameter>        
+        <parameter key="jobeet2.category.entity.class">Application\Jobeet2Bundle\Entity\Category</parameter>
+        <parameter key="jobeet2.affiliate.entity.class">Application\Jobeet2Bundle\Enity\Affiliate</parameter>                    
+    </parameters>
+
+    <services>
+        <!-- Job Repository Service -->
+	    <service id="jobeet2.job.repository"
+	        public="true"
+	        class="%job.repository.class%"  
+	        factory-service="doctrine.orm.default_entity_manager"
+	        factory-method="getRepository">             
+	            <argument>Jobeet2Bundle:Job</argument>           
+	    </service>
+	        
+	    <!-- Category Repository Service -->
+	    <service id="jobeet2.category.repository"
+	        public="true"
+	        class="%category.repository.class%"  
+	        factory-service="doctrine.orm.default_entity_manager"
+	        factory-method="getRepository">             
+	            <argument>Jobeet2Bundle:Category</argument>           
+	   </service>
+   </services>
+       
+</container>
